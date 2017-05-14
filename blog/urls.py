@@ -14,12 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
+from django.views.generic.base import RedirectView
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^weblog/', include('zinnia.urls')),
+    url(r'^$',  RedirectView.as_view(url="/blog")),
+    url(r'^blog/', include('zinnia.urls')),
     url(r'^comments/', include('django_comments.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
