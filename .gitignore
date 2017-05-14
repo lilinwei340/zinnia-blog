@@ -1,3 +1,6 @@
 bin
 .idea
 db.sqlite3
+uploads/
+static/
+*.pyc
